@@ -9,6 +9,7 @@ description = "OpenEnv-style crisis misinformation verification environment for 
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+  "openai>=1.40,<2.0",
   "streamlit>=1.44,<2.0",
 ]
 

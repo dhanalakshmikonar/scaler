@@ -116,6 +116,25 @@ Run a single task:
 python -m baseline.run --task-id easy_reused_image_bridge
 ```
 
+## Checklist-compatible inference entrypoint
+
+This repository also includes `inference.py` to better match automated checklist expectations.
+
+Environment variables used there:
+
+- `API_BASE_URL` with a default of `https://api.openai.com/v1`
+- `MODEL_NAME` with a default of `gpt-4.1-mini`
+- `HF_TOKEN` with no default
+- optional `LOCAL_IMAGE_NAME`
+
+Run it like this:
+
+```bash
+python inference.py --task-id easy_reused_image_bridge
+```
+
+The script prints structured `START`, `STEP`, and `END` logs and then emits the final JSON result.
+
 ## Submission notes
 
 This repository is intentionally scoped for a hackathon build:
