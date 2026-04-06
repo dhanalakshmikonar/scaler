@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crisis-verify-env"
+version = "0.1.0"
+description = "OpenEnv-style crisis misinformation verification environment for hackathons."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "streamlit>=1.44,<2.0",
+]
+
+[project.scripts]
+crisis-verify-baseline = "baseline.run:main"
+
+[tool.setuptools]
+packages = ["crisis_verify_env", "baseline"]

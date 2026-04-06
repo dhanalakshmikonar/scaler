@@ -1,0 +1,17 @@
+name: CrisisVerifyEnv
+description: >
+  OpenEnv-style environment where an agent investigates crisis-time claims and
+  predicts whether they are real, misleading, fake, or unsupported.
+entrypoint: crisis_verify_env.env:CrisisVerifyEnv
+tags:
+  - openenv
+  - misinformation
+  - crisis-response
+  - fact-checking
+tasks:
+  - id: easy
+    description: Detect obvious real or false crisis claims with clear evidence.
+  - id: medium
+    description: Handle partially true claims and timeline-sensitive misinformation.
+  - id: hard
+    description: Investigate deepfakes, narrative escalation, and conflicting evidence.
