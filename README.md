@@ -16,7 +16,7 @@ The demo app lets a judge or user:
 - receive a verdict such as `Likely True`, `Likely False`, `Mixed / Needs Context`, or `Unverified`
 - see confidence, matched signals, and suggested checks
 
-Launch the app:
+Launch the local demo app:
 
 ```bash
 streamlit run app.py
@@ -25,6 +25,7 @@ streamlit run app.py
 Main app file:
 
 - `app.py`: hackathon-facing prediction UI
+- `server.py`: API server for OpenEnv-style automated checks and deployment
 
 ## Environment concept
 
@@ -101,6 +102,17 @@ Safer on Windows if `streamlit` is not on PATH:
 ```bash
 python -m streamlit run app.py
 ```
+
+## Run the API server
+
+```bash
+uvicorn server:app --host 0.0.0.0 --port 8501
+```
+
+Important deployment note:
+
+- the Hugging Face / automated checker deployment should point to `server.py`
+- the Streamlit UI is for local demo use
 
 ## Run baseline
 
