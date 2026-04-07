@@ -4,7 +4,7 @@ from dataclasses import asdict, is_dataclass
 from enum import Enum
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Body, FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
@@ -77,8 +77,9 @@ def tasks() -> dict[str, Any]:
 
 
 @app.post("/reset")
-def reset(request: ResetRequest) -> dict[str, Any]:
+def reset(request: ResetRequest | None = Body(default=None)) -> dict[str, Any]:
     try:
+        request = request or ResetRequest()
         difficulty = request.difficulty
         if difficulty is not None:
             difficulty = Difficulty(difficulty).value
@@ -109,4 +110,3 @@ def step(request: StepRequest) -> dict[str, Any]:
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     return normalize_result(result)
-
