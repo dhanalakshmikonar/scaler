@@ -8,6 +8,7 @@ from fastapi import Body, FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
+import uvicorn
 
 from crisis_verify_env import CrisisVerifyEnv
 from crisis_verify_env.models import Action, Difficulty, StepResult
@@ -110,3 +111,11 @@ def step(request: StepRequest) -> dict[str, Any]:
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     return normalize_result(result)
+
+
+def main() -> None:
+    uvicorn.run(app, host="0.0.0.0", port=8501)
+
+
+if __name__ == "__main__":
+    main()
